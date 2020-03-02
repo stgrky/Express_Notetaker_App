@@ -1,5 +1,5 @@
-var db = require ("../db/db.json.js");
-var fs = require("fs");
+const db = require ("../db/db.json");
+const fs = require("fs");
 let id = db.length + 1;
 function apiRoutes(app) {
     app.get("/api/notes", (req,res) => {
