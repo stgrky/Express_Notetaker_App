@@ -3,7 +3,7 @@ var express = require("express");
 
 // Sets up Express
 var app = express();
-var PORT = process.env.PORT || 6669
+var PORT = process.env.PORT || 4200
 
 // Path for "public" to be local host
 app.use(express.static("public"));
