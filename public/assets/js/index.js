@@ -5,7 +5,7 @@ const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
 
 // activeNote is used to keep track of the note in the textarea
-var activeNote = {};
+let activeNote = {};
 
 // A function for getting all notes from the db
 let getNotes = () => {
@@ -68,7 +68,7 @@ let handleNoteDelete = (event) => {
   // event.stopPropagation();
 
   let noteId = $(event.target).attr("data-id");
-    console.log(noteId)
+  console.log(noteId)
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -81,8 +81,11 @@ let handleNoteDelete = (event) => {
 };
 
 // Sets the activeNote and displays it
-let handleNoteView = () => {
-  activeNote = {};
+let handleNoteView = (event) => {
+  activeNote = $(event.target).data();
+  console.log(event.target)
+  console.log($(event.target))
+  console.log(activeNote)
   renderActiveNote();
 };
 
@@ -112,9 +115,9 @@ let renderNoteList = (notes) => {
     let note = notes[i];
 
     let $li = $("<li class='list-group-item'>").data(note);
-    let $span = $("<span>").text(note.title);
+    let $span = $("<span>").text(note.title).data(note);
     let $delBtn = $(
-      "<i data-id='"+note.id+"' class= 'fas fa-trash-alt float-right text-danger delete-note'>"
+      "<i data-id='" + note.id + "' class= 'fas fa-trash-alt float-right text-danger delete-note'>"
     );
 
     $li.append($span, $delBtn);
